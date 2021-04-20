@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 
-#define SHMEM_NAME "isel.so.shm.example01"
+#define SHMEM_NAME "/isel.so.shm.example01"
 
 int main() {
 	puts(":: STARTED ::");
