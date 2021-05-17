@@ -1,3 +1,16 @@
+/////////////////////////////////////////////////////////////////
+//
+// CCISEL 
+// 2007-2021
+//
+// UThread library:
+//   User threads supporting cooperative multithreading.
+//
+// Authors:
+//   Carlos Martins, João Trindade, Duarte Nunes, Jorge Martins
+// 
+
+#include "uthread.h"
 #include "usynch.h"
 #include "waitblock.h"
 

@@ -1,8 +1,25 @@
+/////////////////////////////////////////////////////////////////
+//
+// CCISEL 
+// 2007-2021
+//
+// UThread library:
+//   User threads supporting cooperative multithreading.
+//
+// Authors:
+//   Carlos Martins, João Trindade, Duarte Nunes, Jorge Martins
+// 
+
 #pragma once
 
 #include "uthread.h"
 #include "list.h"
 
+//
+// A single-shot broadcast event. Threads are kept blocked in wait
+// until set is called.
+//
+ 
 typedef struct event {
 	bool signaled;
 	list_entry_t waiters;
@@ -14,6 +31,9 @@ void event_wait(event_t * event);
 
 void event_set(event_t * event);
 
+INLINE bool event_value(event_t * event) {
+	return event->signaled; 
+}
 
 
 //
