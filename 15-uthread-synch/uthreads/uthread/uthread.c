@@ -195,21 +195,6 @@ uthread_t* ut_self() {
 	return running_thread;
 }
 
-//
-// Halts the execution of the current user thread.
-//
-void ut_deactivate() {
-	schedule();
-}
-
-//
-// Places the specified user thread at the end of the ready queue,
-// making it eligible to run.
-//
-void ut_activate(uthread_t * thread) {
-	insert_list_last(&ready_queue, &(thread->entry));
-}
-
 
 ///////////////////////////////////////
 //
