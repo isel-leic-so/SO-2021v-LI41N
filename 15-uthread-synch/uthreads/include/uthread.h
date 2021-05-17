@@ -62,8 +62,8 @@ uthread_t * ut_self();
 void ut_deactivate();
 
 //
-// Places the specified user thread at the end of the ready queue, where it
-// becomes eligible to run.
+// Places the specified user thread at the end of the ready queue,
+// making it eligible to run.
 //
 void ut_activate(uthread_t * handle);
 

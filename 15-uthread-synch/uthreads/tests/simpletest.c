@@ -59,7 +59,6 @@ void test1 ()  {
 
 	for (index = 0; index < MAX_THREADS; ++index) {
 		ut_create(test1_thread, (void *) ('0' + index));
-		
 	}   
 
 	ut_run();
