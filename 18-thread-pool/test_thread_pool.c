@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include "thread_pool.h"
 
 #define NTHREADS 3
@@ -23,8 +24,8 @@ int main() {
 	thread_pool_submit(&tp, test_task, "msg07");
 	thread_pool_submit(&tp, test_task, "msg08");
 
-	sleep(8); // don't do this at home
+	//sleep(8); // don't do this at home
 
-	// thread_pool_cleanup(&tp);
+	thread_pool_cleanup(&tp);
 	return 0;
 }
