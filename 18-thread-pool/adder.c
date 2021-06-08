@@ -4,8 +4,8 @@
 #include <assert.h>
 #include "chrono.h"
 
-#include "thread_pool.h"
 #include "countdownlatch.h"
+#include "thread_pool.h"
 
 #define NITERS 50
 #define NVALS 5000000
@@ -96,9 +96,9 @@ void test(char *name,
 }
 
 int main() {
-	thread_pool_init(&tpool, NTHREADS);
-	
 	init_vals();
+
+	thread_pool_init(&tpool, NTHREADS);
 	 
 	test("sequential adder", seq_adder, vals, NVALS, NVALS);
 	test("parallel adder", par_adder, vals, NVALS, NVALS);
