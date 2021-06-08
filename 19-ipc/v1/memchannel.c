@@ -51,6 +51,9 @@ void mc_destroy(memch_t * mc) {
 void mc_put(memch_t * mc, void * item) {
 	sem_wait(&(mc->has_space));
 	long iput = atomic_fetch_add(&(mc->iput), 1) % mc->capacity;
+	// NOTA: várias threads/processos podem chegar à linha anterior
+	//       em tempo próximo e a ordem com que vão executar as duas
+	//       linhas seguintes não é garantida;
 	memcpy(mc->items + iput * mc->elem_size, item, mc->elem_size);
 	sem_post(&(mc->has_items));
 }
@@ -58,6 +61,9 @@ void mc_put(memch_t * mc, void * item) {
 void mc_get(memch_t * mc, void * item) {
 	sem_wait(&(mc->has_items));
 	long iget = atomic_fetch_add(&(mc->iget), 1) % mc->capacity;
+	// NOTA: várias threads/processos podem chegar à linha anterior
+	//       em tempo próximo e a ordem com que vão executar as duas
+	//       linhas seguintes não é garantida;
 	memcpy(item, mc->items + iget * mc->elem_size, mc->elem_size);
 	sem_post(&(mc->has_space));
 }

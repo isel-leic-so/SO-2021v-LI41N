@@ -7,6 +7,9 @@
 
 #define MEMCH_MAX_NAME_LEN 128
 
+// NOTA: suporta 1 consumidor e 1 produtor em simultâneo
+//       não suporta múltiplos consumidores e/ou produtores simultâneos
+//
 typedef struct memch {
 	size_t elem_size; // size of each element
 	size_t capacity;  // number of elements
